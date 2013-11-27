@@ -55,3 +55,14 @@ class PluginResult(views.APIView):
         return Response(resp)
         ct = "text/%s" % format
         return Response(resp, content_type=ct)
+
+
+class Extract(views.APIView):
+    permission_classes=[IsAuthenticated]
+    #i'm not using renderers, but this needs to be here to allow it to accept the content types
+    renderer_classes = [JSONRenderer]
+    def get(self, request):
+        print request
+        args = request.GET["q"].split()
+        resp = {"args": args}
+        return Response(resp)

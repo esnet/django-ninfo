@@ -89,7 +89,7 @@ function Multiple($scope, $routeParams, $http) {
     $scope.lookup = function(){
         $scope.reset();
         var data = {q: $scope.q};
-        $http({method:'GET', url: '/extract', params: data}).success(function(data){
+        $http({method:'GET', url: '/ninfo/api/extract', params: data}).success(function(data){
             $scope.args = data.args;
             console.log($scope.args);
             $scope.status.total=0;
