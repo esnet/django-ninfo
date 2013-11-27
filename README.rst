@@ -1,5 +1,5 @@
 =====
-Ninfo
+django-ninfo - A ninfo web frontend as a django app
 =====
 
 
