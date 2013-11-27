@@ -8,6 +8,8 @@ router = routers.DefaultRouter()
 router.register(r'plugins', views.PluginViewSet, base_name="plugins")
 
 urlpatterns = patterns('',
+    url(r'api/plugins/(?P<plugin>\w*)/(?P<format>[a-z]+)/(?P<arg>.*)$', views.PluginResult.as_view()),
+    url(r'api/plugins/(?P<plugin>\w*)/(?P<arg>.*)$', views.PluginResult.as_view()),
     url(r'api/', include(router.urls)),
     url(r'^$', RedirectView.as_view(url='/static/ninfo/index.html', permanent=False), name='index'),
 

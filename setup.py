@@ -30,6 +30,6 @@ setup(
     ],
     install_requires = [
         "djangorestframework",
-        "ninfo",
+        "ninfo>=0.3.1)",
     ],
 )
