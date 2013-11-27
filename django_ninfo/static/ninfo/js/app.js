@@ -142,7 +142,7 @@ app.directive('result', function($http) {
         $scope.plugin.running=true;
         $scope.$parent.status.started=true;
         $scope.$parent.status.running++;
-        $http.get("/info/html/" + $scope.plugin.name + "/" + $scope.arg).success(function(data){
+        $http.get("/ninfo/api/plugins/" + $scope.plugin.name + "/html/" + $scope.arg).success(function(data){
             $scope.plugin.result=data;
             $scope.result=data;
             $scope.plugin.running=false;
