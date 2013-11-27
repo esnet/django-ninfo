@@ -1,9 +1,9 @@
 var app = angular.module('ninfo', []).
     config(['$routeProvider', function($routeProvider) {
     $routeProvider.
-    when('/single',         {templateUrl: '/static/partials/single.html', controller: Single}).
-    when('/single/:arg',    {templateUrl: '/static/partials/single.html', controller: SingleArg}).
-    when('/multiple',       {templateUrl: '/static/partials/multiple.html', controller: Multiple}).
+    when('/single',         {templateUrl: 'partials/single.html', controller: Single}).
+    when('/single/:arg',    {templateUrl: 'partials/single.html', controller: SingleArg}).
+    when('/multiple',       {templateUrl: 'partials/multiple.html', controller: Multiple}).
     otherwise({redirectTo: '/single'});
     }]);
 
@@ -28,7 +28,7 @@ function SingleArg($scope, $routeParams, $http, $location) {
         };
     };
     $scope.reset();
-    $http.get("/info/plugins").success(function(data){
+    $http.get("/ninfo/api/plugins").success(function(data){
         $scope.plugins = data.plugins;
         $.each(data.plugins, function(i,p){
             p.checked=true;
@@ -79,7 +79,7 @@ function Multiple($scope, $routeParams, $http) {
         $scope.args=[];
     };
     $scope.reset();
-    $http.get("/info/plugins").success(function(data){
+    $http.get("/ninfo/api/plugins").success(function(data){
         $scope.plugins = data.plugins
         $.each(data.plugins, function(i,p){
             p.checked=true;
