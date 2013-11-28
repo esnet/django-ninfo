@@ -20,7 +20,11 @@ def get_info_object():
 class PluginViewSet(viewsets.ViewSet):
     """
     Ninfo plugins
-    request /api/plugins/name/argument/.format for result
+    request one of the following urls for plugin result:
+
+        /api/plugins/name/format/argument
+        /api/plugins/name/argument
+
     """
     permission_classes=[IsAuthenticated]
     def list(self, request, format=None):
