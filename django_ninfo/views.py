@@ -57,8 +57,6 @@ class PluginResult(views.APIView):
         func = mapping[format]
         resp = getattr(P, func)(plugin, arg)
         return Response(resp)
-        ct = "text/%s" % format
-        return Response(resp, content_type=ct)
 
 
 class Extract(views.APIView):
