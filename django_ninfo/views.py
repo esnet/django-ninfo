@@ -52,7 +52,8 @@ class PluginResult(views.APIView):
     renderer_classes = (JSONRenderer, StaticHTMLRenderer, PlainTextRenderer)
     def get(self, request, plugin, arg, format="json"):
         P = get_info_object()
-        if plugin not in P:
+        plugin_obj = P.get_plugin(plugin)
+        if plugin_obj is None:
             raise Http404
         func = mapping[format]
         resp = getattr(P, func)(plugin, arg)
