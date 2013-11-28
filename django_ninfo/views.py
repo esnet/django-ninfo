@@ -57,7 +57,9 @@ class PluginResult(views.APIView):
             raise Http404
         func = mapping[format]
         resp = getattr(P, func)(plugin, arg)
-        return Response(resp)
+        timeout = P.get_plugin(plugin).cache_timeout or 60
+        headers = {'Cache-Control':  'max-age=%d' % timeout}
+        return Response(resp, headers=headers)
 
 
 class Extract(views.APIView):
