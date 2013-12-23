@@ -2,7 +2,7 @@ var app = angular.module('ninfo', ['ngRoute']).
     config(['$routeProvider', function($routeProvider) {
     $routeProvider.
     when('/single',         {templateUrl: 'partials/single.html', controller: Single}).
-    when('/single/:arg*' ,  {templateUrl: 'partials/single.html', controller: SingleArg}).
+    when('/single/:arg*',   {templateUrl: 'partials/single.html', controller: SingleArg}).
     when('/multiple',       {templateUrl: 'partials/multiple.html', controller: Multiple}).
     otherwise({redirectTo: '/single'});
     }]);
