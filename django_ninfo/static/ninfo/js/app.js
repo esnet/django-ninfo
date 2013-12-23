@@ -138,7 +138,7 @@ app.directive('result', function($http, $sce) {
     restrict: 'E',
     scope: {arg: '=arg', plugin: '=plugin'},
     link: function($scope, $element, $attrs){
-        $scope.result="Loading...";
+        $scope.result=$sce.trustAsHtml("Loading...");
         $scope.plugin.running=true;
         $scope.$parent.status.started=true;
         $scope.$parent.status.running++;
@@ -156,7 +156,7 @@ app.directive('result', function($http, $sce) {
         }).error(function (){
             $scope.$parent.status.running--;
             $scope.$parent.status.error++;
-            $scope.result="";
+            $scope.result=$sce.trustAsHtml("");
         });
     },
     template:
