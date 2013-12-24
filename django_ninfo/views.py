@@ -67,7 +67,6 @@ class Extract(views.APIView):
     #i'm not using renderers, but this needs to be here to allow it to accept the content types
     renderer_classes = [JSONRenderer]
     def get(self, request):
-        print request
         args = request.GET["q"].split()
         resp = {"args": args}
         return Response(resp)
