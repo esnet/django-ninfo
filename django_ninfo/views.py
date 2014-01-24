@@ -38,6 +38,8 @@ class PlainTextRenderer(BaseRenderer):
     media_type = 'text/plain'
     format = 'txt'
     def render(self, data, media_type=None, renderer_context=None):
+        if isinstance(data, dict):
+            return data["detail"].encode(self.charset)
         return data.encode(self.charset)
 
 mapping = {
