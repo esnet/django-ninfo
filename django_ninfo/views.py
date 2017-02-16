@@ -1,4 +1,4 @@
-from ninfo import Ninfo
+from ninfo import Ninfo, PluginError
 from rest_framework import viewsets, views
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
@@ -58,7 +58,10 @@ class PluginResult(views.APIView):
         if plugin_obj is None:
             raise Http404
         func = mapping[format]
-        resp = getattr(P, func)(plugin, arg)
+        try:
+            resp = getattr(P, func)(plugin, arg)
+        except PluginError, e:
+            resp = "Error: %r" % e
         timeout = P.get_plugin(plugin).cache_timeout or 60
         headers = {'Cache-Control':  'max-age=%d' % timeout}
         return Response(resp, headers=headers)
