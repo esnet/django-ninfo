@@ -1,4 +1,5 @@
-from django.views.generic.base import RedirectView
+from django.contrib.auth.decorators import login_required
+from django.views.generic import TemplateView
 from django.conf.urls import url, include
 from django_ninfo import views
 
@@ -13,5 +14,5 @@ urlpatterns = [
     url(r'api/plugins/(?P<plugin>\w*)/(?P<arg>.*)$', views.PluginResult.as_view()),
     url(r'api/extract', views.Extract.as_view()),
     url(r'api/', include(router.urls)),
-    url(r'^$', RedirectView.as_view(url='/static/ninfo/index.html', permanent=False), name='index'),
+    url(r'^$', login_required(TemplateView.as_view(template_name='ninfo/index.html')), name='index'),
 ]

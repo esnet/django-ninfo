@@ -1,2 +1,2 @@
 recursive-include django_ninfo/static *
-
+recursive-include django_ninfo/templates *
